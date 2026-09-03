@@ -7,7 +7,13 @@ import { Star } from "lucide-react";
 import { Product } from "@/lib/types";
 import { useCartStore } from "@/lib/store/cartStore";
 
-export default function ProductCard({ product }: { product: Product }) {
+export default function ProductCard({
+  product,
+  priority = false,
+}: {
+  product: Product;
+  priority?: boolean;
+}) {
   const [added, setAdded] = useState(false);
   const addItem = useCartStore((s) => s.addItem);
 
@@ -27,6 +33,7 @@ export default function ProductCard({ product }: { product: Product }) {
             fill
             sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
             className="object-contain p-6"
+            priority={priority}
           />
         </div>
         <div className="flex flex-col gap-1 p-4 pb-0">
