@@ -16,3 +16,10 @@ export interface CartItem {
   productId: string;
   quantity: number;
 }
+
+export interface ProductFilters {
+  category: string;
+  price: number;
+  q: string;
+  brands: string[];
+}

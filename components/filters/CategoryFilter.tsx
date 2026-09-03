@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useProductFilters } from "@/lib/hooks/useProductFilters";
 
 const categories = [
   { value: "all", label: "All" },
@@ -10,7 +10,7 @@ const categories = [
 ] as const;
 
 export default function CategoryFilter() {
-  const [selected, setSelected] = useState<string>("all");
+  const { filters, setCategory } = useProductFilters();
 
   return (
     <fieldset>
@@ -25,8 +25,8 @@ export default function CategoryFilter() {
               type="radio"
               name="category"
               value={c.value}
-              checked={selected === c.value}
-              onChange={() => setSelected(c.value)}
+              checked={filters.category === c.value}
+              onChange={() => setCategory(c.value)}
               className="h-4 w-4 accent-white"
             />
             {c.label}

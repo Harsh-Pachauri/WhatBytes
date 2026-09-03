@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Link from "next/link";
 import { ShoppingCart, User } from "lucide-react";
 import SearchBar from "./SearchBar";
@@ -12,7 +13,9 @@ export default function Header() {
         </Link>
 
         <div className="order-3 w-full sm:order-2 sm:w-auto sm:flex-1">
-          <SearchBar />
+          <Suspense fallback={null}>
+            <SearchBar />
+          </Suspense>
         </div>
 
         <div className="order-2 ml-auto flex items-center gap-3 sm:order-3 sm:ml-0">
