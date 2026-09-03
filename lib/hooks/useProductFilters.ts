@@ -2,7 +2,11 @@
 
 import { useCallback, useMemo } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { DEFAULT_MAX_PRICE, parseFilters } from "../utils/filterProducts";
+import {
+  DEFAULT_MAX_PRICE,
+  DEFAULT_MIN_PRICE,
+  parseFilters,
+} from "../utils/filterProducts";
 
 export function useProductFilters() {
   const router = useRouter();
@@ -34,8 +38,13 @@ export function useProductFilters() {
   );
 
   const setPrice = useCallback(
-    (price: number) =>
-      setParam("price", price >= DEFAULT_MAX_PRICE ? null : `0-${price}`),
+    (min: number, max: number) =>
+      setParam(
+        "price",
+        min <= DEFAULT_MIN_PRICE && max >= DEFAULT_MAX_PRICE
+          ? null
+          : `${min}-${max}`,
+      ),
     [setParam],
   );
 

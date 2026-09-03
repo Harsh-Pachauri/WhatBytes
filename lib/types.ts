@@ -19,7 +19,8 @@ export interface CartItem {
 
 export interface ProductFilters {
   category: string;
-  price: number;
+  priceMin: number;
+  priceMax: number;
   q: string;
   brands: string[];
 }
