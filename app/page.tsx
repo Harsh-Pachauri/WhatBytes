@@ -1,5 +1,6 @@
 import FilterSidebar from "@/components/filters/FilterSidebar";
 import ProductGrid from "@/components/products/ProductGrid";
+import EmptyState from "@/components/products/EmptyState";
 import { products } from "@/lib/data/products";
 import { filterProducts, parseFilters } from "@/lib/utils/filterProducts";
 
@@ -25,7 +26,11 @@ export default async function Home({ searchParams }: HomeProps) {
     <main className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 py-6 sm:px-6 lg:flex-row lg:px-8">
       <FilterSidebar />
       <div className="min-w-0 flex-1">
-        <ProductGrid products={filtered} />
+        {filtered.length > 0 ? (
+          <ProductGrid products={filtered} />
+        ) : (
+          <EmptyState />
+        )}
       </div>
     </main>
   );
