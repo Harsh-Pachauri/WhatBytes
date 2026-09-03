@@ -2,7 +2,7 @@
 
 A product listing, product detail, and cart app built for the Whatbytes frontend take-home assignment.
 
-**Live demo:** _add Vercel URL here after deploying_
+**Live demo:** https://what-bytes-chi-eight.vercel.app/
 
 ## Stack
 
