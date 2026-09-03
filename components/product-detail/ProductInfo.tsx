@@ -1,8 +1,22 @@
+"use client";
+
+import { useState } from "react";
 import { Star } from "lucide-react";
 import { Product } from "@/lib/types";
+import { useCartStore } from "@/lib/store/cartStore";
 import QuantitySelector from "./QuantitySelector";
 
 export default function ProductInfo({ product }: { product: Product }) {
+  const [qty, setQty] = useState(1);
+  const [added, setAdded] = useState(false);
+  const addItem = useCartStore((s) => s.addItem);
+
+  const handleAdd = () => {
+    addItem(product.id, qty);
+    setAdded(true);
+    setTimeout(() => setAdded(false), 1500);
+  };
+
   return (
     <div className="flex flex-1 flex-col gap-4 rounded-xl bg-white p-6 shadow-sm">
       <div>
@@ -40,14 +54,15 @@ export default function ProductInfo({ product }: { product: Product }) {
 
       <div>
         <p className="mb-2 text-sm font-semibold text-gray-900">Quantity</p>
-        <QuantitySelector max={product.stock} />
+        <QuantitySelector value={qty} onChange={setQty} max={product.stock} />
       </div>
 
       <button
         type="button"
+        onClick={handleAdd}
         className="mt-2 w-full rounded-lg bg-blue-600 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-700 sm:w-auto sm:px-8"
       >
-        Add to Cart
+        {added ? "Added!" : "Add to Cart"}
       </button>
     </div>
   );

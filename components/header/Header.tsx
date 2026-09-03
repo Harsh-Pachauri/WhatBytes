@@ -25,7 +25,7 @@ export default function Header() {
           >
             <ShoppingCart size={18} />
             <span className="hidden sm:inline">Cart</span>
-            <CartBadge count={0} />
+            <CartBadge />
           </Link>
           <span className="flex h-9 w-9 items-center justify-center rounded-full bg-blue-900">
             <User size={18} />

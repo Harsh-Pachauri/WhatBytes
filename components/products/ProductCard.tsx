@@ -1,9 +1,22 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Star } from "lucide-react";
 import { Product } from "@/lib/types";
+import { useCartStore } from "@/lib/store/cartStore";
 
 export default function ProductCard({ product }: { product: Product }) {
+  const [added, setAdded] = useState(false);
+  const addItem = useCartStore((s) => s.addItem);
+
+  const handleAdd = () => {
+    addItem(product.id, 1);
+    setAdded(true);
+    setTimeout(() => setAdded(false), 1200);
+  };
+
   return (
     <div className="flex flex-col overflow-hidden rounded-xl bg-white shadow-sm transition-shadow hover:shadow-md">
       <Link href={`/product/${product.id}`}>
@@ -39,9 +52,10 @@ export default function ProductCard({ product }: { product: Product }) {
       <div className="p-4 pt-3">
         <button
           type="button"
+          onClick={handleAdd}
           className="w-full rounded-lg bg-blue-600 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
         >
-          Add to Cart
+          {added ? "Added!" : "Add to Cart"}
         </button>
       </div>
     </div>
