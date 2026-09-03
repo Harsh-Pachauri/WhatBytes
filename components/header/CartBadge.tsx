@@ -1,31 +1,10 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
 import { useCartStore } from "@/lib/store/cartStore";
-
-function subscribeHydration(callback: () => void) {
-  const unsubHydrate = useCartStore.persist.onHydrate(callback);
-  const unsubFinish = useCartStore.persist.onFinishHydration(callback);
-  return () => {
-    unsubHydrate();
-    unsubFinish();
-  };
-}
-
-function getHydrated() {
-  return useCartStore.persist.hasHydrated();
-}
-
-function getServerHydrated() {
-  return false;
-}
+import { useCartHydrated } from "@/lib/hooks/useCartHydrated";
 
 export default function CartBadge() {
-  const hydrated = useSyncExternalStore(
-    subscribeHydration,
-    getHydrated,
-    getServerHydrated,
-  );
+  const hydrated = useCartHydrated();
   const count = useCartStore((s) => s.totalItems());
 
   if (!hydrated || count <= 0) return null;
