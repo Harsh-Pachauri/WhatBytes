@@ -24,15 +24,15 @@ export default function ProductCard({
   };
 
   return (
-    <div className="flex flex-col overflow-hidden rounded-xl bg-white shadow-sm transition-shadow hover:shadow-md">
+    <div className="flex flex-col overflow-hidden rounded-md bg-white">
       <Link href={`/product/${product.id}`}>
-        <div className="relative aspect-square bg-gray-50">
+        <div className="relative aspect-square">
           <Image
             src={product.image}
             alt={product.title}
             fill
             sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-            className="object-contain p-6"
+            className="object-cover"
             priority={priority}
           />
         </div>
