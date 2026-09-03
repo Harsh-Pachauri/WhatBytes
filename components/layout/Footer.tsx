@@ -2,7 +2,7 @@ import { Facebook, Instagram, Twitter } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="mt-auto bg-blue-950 text-white">
+    <footer className="mt-auto bg-[#002B60] text-white">
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 px-4 py-6 sm:flex-row sm:justify-between sm:px-6 lg:px-8">
         <p className="text-sm text-blue-200">
           © {new Date().getFullYear()} Whatbytes. All rights reserved.

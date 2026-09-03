@@ -60,7 +60,7 @@ export default function ProductInfo({ product }: { product: Product }) {
       <button
         type="button"
         onClick={handleAdd}
-        className="mt-2 w-full rounded-lg bg-blue-600 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-700 sm:w-auto sm:px-8"
+        className="mt-2 w-full rounded-lg bg-[#005EB7] py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90 sm:w-auto sm:px-8"
       >
         {added ? "Added!" : "Add to Cart"}
       </button>

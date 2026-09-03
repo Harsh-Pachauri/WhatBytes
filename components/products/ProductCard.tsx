@@ -60,7 +60,7 @@ export default function ProductCard({
         <button
           type="button"
           onClick={handleAdd}
-          className="w-full rounded-lg bg-blue-600 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
+          className="w-full rounded-lg bg-[#005EB7] py-2 text-sm font-medium text-white transition-opacity hover:opacity-90"
         >
           {added ? "Added!" : "Add to Cart"}
         </button>

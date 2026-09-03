@@ -23,17 +23,17 @@ export default function SearchBar() {
   }, [value]);
 
   return (
-    <div className="relative w-full">
+    <div className="group relative w-full">
       <Search
         size={18}
-        className="pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-gray-400"
+        className="pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-white/80 group-focus-within:text-gray-400"
       />
       <input
         type="text"
         value={value}
         onChange={(e) => setValue(e.target.value)}
         placeholder="Search for products..."
-        className="w-full rounded-full bg-white py-2 pr-4 pl-10 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full rounded-md border border-white/30 bg-white/10 py-2 pr-4 pl-10 text-sm text-white placeholder:text-white/70 focus:border-transparent focus:bg-white focus:text-gray-900 focus:placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-300"
       />
     </div>
   );
